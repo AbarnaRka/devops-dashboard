@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: monospace;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+header {
+  background: #111827;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-indicator {
+  color: #22c55e;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.pipeline {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.stage {
+  flex: 1;
+  padding: 10px;
+  background: #334155;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.stage.active {
+  background: #3b82f6;
+}
+
+.stage.success {
+  background: #22c55e;
+}
+
+.logs {
+  height: 300px;
+  overflow-y: auto;
+}
+
+button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}

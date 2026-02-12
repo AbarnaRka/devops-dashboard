@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Command Center</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🚀 DevOps Command Center</h1>
+  <div class="status-indicator">
+    ● Production Environment
+  </div>
+</header>
+
+<div class="dashboard">
+
+  <!-- Pipeline -->
+  <div class="card">
+    <h2>CI/CD Pipeline</h2>
+    <div class="pipeline">
+      <div class="stage" id="code">Code</div>
+      <div class="stage" id="build">Build</div>
+      <div class="stage" id="test">Test</div>
+      <div class="stage" id="deploy">Deploy</div>
+    </div>
+    <button onclick="startPipeline()">Trigger Deployment</button>
+  </div>
+
+  <!-- Metrics -->
+  <div class="card">
+    <h2>Cluster Metrics</h2>
+    <canvas id="metricsChart"></canvas>
+  </div>
+
+  <!-- Logs -->
+  <div class="card logs">
+    <h2>Live Logs</h2>
+    <div id="logStream"></div>
+  </div>
+
+  <!-- Kubernetes -->
+  <div class="card">
+    <h2>Kubernetes Cluster</h2>
+    <p>Active Pods: <span id="pods">3</span></p>
+    <button onclick="scaleUp()">Scale Up</button>
+    <button onclick="scaleDown()">Scale Down</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
