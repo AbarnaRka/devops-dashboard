@@ -1,72 +1,95 @@
 body {
-  margin: 0;
-  font-family: monospace;
-  background: #0f172a;
-  color: #e2e8f0;
+background: #0f172a;
+color: white;
+font-family: monospace;
+margin: 0;
 }
 
-header {
-  background: #111827;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.hidden {
+display: none;
 }
 
-.status-indicator {
-  color: #22c55e;
+.login-screen {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+gap: 10px;
 }
 
-.dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.pipeline {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.stage {
-  flex: 1;
-  padding: 10px;
-  background: #334155;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.stage.active {
-  background: #3b82f6;
-}
-
-.stage.success {
-  background: #22c55e;
-}
-
-.logs {
-  height: 300px;
-  overflow-y: auto;
+input {
+padding: 10px;
+width: 200px;
 }
 
 button {
-  padding: 8px 15px;
-  margin-right: 10px;
-  background: #3b82f6;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+padding: 10px;
+background: #3b82f6;
+border: none;
+color: white;
+cursor: pointer;
 }
 
-button:hover {
-  opacity: 0.8;
+header {
+display: flex;
+justify-content: space-between;
+background: #111827;
+padding: 15px;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+gap: 20px;
+padding: 20px;
+}
+
+.card {
+background: #1e293b;
+padding: 20px;
+border-radius: 10px;
+}
+
+.full {
+grid-column: 1 / -1;
+}
+
+.stage {
+padding: 10px;
+background: #334155;
+margin: 5px;
+display: inline-block;
+}
+
+.stage.active {
+background: #3b82f6;
+}
+
+.stage.success {
+background: #22c55e;
+}
+
+.stage.failed {
+background: red;
+}
+
+.status {
+padding: 5px 10px;
+}
+
+.green { color: #22c55e; }
+.yellow { color: #eab308; }
+.red { color: red; }
+
+.service {
+margin: 5px;
+}
+
+#terminal {
+height: 200px;
+background: black;
+padding: 10px;
+overflow-y: auto;
+font-size: 12px;
 }
