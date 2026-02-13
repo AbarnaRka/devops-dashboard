@@ -3,56 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Command Center</title>
+<title>DevOps Command Center v2</title>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
 <link rel="stylesheet" href="style.css">
+
+<script>
+mermaid.initialize({ startOnLoad: true, theme: "dark" });
+</script>
+
 </head>
 
 <body>
 
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-screen">
+  <h1>DevOps Command Center</h1>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div id="dashboard" class="hidden">
+
 <header>
-  <h1>🚀 DevOps Command Center</h1>
-  <div class="status-indicator">
-    ● Production Environment
-  </div>
+  <h1>DevOps Command Center</h1>
+
+  <select onchange="switchCluster(this.value)">
+    <option>Production</option>
+    <option>Staging</option>
+    <option>Development</option>
+  </select>
+
+  <div id="envStatus" class="status green">Healthy</div>
+
 </header>
 
-<div class="dashboard">
+<div class="grid">
 
-  <!-- Pipeline -->
-  <div class="card">
-    <h2>CI/CD Pipeline</h2>
-    <div class="pipeline">
-      <div class="stage" id="code">Code</div>
-      <div class="stage" id="build">Build</div>
-      <div class="stage" id="test">Test</div>
-      <div class="stage" id="deploy">Deploy</div>
-    </div>
-    <button onclick="startPipeline()">Trigger Deployment</button>
-  </div>
+<!-- PIPELINE -->
+<div class="card">
+<h2>CI/CD Pipeline</h2>
 
-  <!-- Metrics -->
-  <div class="card">
-    <h2>Cluster Metrics</h2>
-    <canvas id="metricsChart"></canvas>
-  </div>
+<div class="pipeline">
+<div id="code" class="stage">Code</div>
+<div id="build" class="stage">Build</div>
+<div id="test" class="stage">Test</div>
+<div id="deploy" class="stage">Deploy</div>
+</div>
 
-  <!-- Logs -->
-  <div class="card logs">
-    <h2>Live Logs</h2>
-    <div id="logStream"></div>
-  </div>
+<button onclick="startDeployment()">Deploy</button>
+<button onclick="rollback()">Rollback</button>
+<button onclick="simulateError()">Simulate Failure</button>
 
-  <!-- Kubernetes -->
-  <div class="card">
-    <h2>Kubernetes Cluster</h2>
-    <p>Active Pods: <span id="pods">3</span></p>
-    <button onclick="scaleUp()">Scale Up</button>
-    <button onclick="scaleDown()">Scale Down</button>
-  </div>
+</div>
+
+<!-- METRICS -->
+<div class="card">
+<h2>CPU / Memory Metrics</h2>
+<canvas id="metricsChart"></canvas>
+</div>
+
+<!-- SERVICES -->
+<div class="card">
+<h2>Service Health</h2>
+
+<div id="services">
+<div class="service green">API Gateway</div>
+<div class="service green">Auth Service</div>
+<div class="service green">Payment Service</div>
+<div class="service green">Database</div>
+</div>
+
+</div>
+
+<!-- DOCKER -->
+<div class="card">
+<h2>Docker Containers</h2>
+
+<ul id="containers">
+<li>frontend: running</li>
+<li>backend: running</li>
+<li>database: running</li>
+</ul>
+
+</div>
+
+<!-- TOPOLOGY -->
+<div class="card full">
+<h2>Microservices Topology</h2>
+
+<div class="mermaid">
+
+graph LR
+User --> CDN
+CDN --> Frontend
+Frontend --> API
+API --> Auth
+API --> Payment
+Payment --> Database
+
+</div>
+
+</div>
+
+<!-- TERMINAL -->
+<div class="card full">
+<h2>Terminal</h2>
+<div id="terminal"></div>
+</div>
+
+</div>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
